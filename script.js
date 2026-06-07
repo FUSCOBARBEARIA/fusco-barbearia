@@ -1,5 +1,3 @@
-:::writing{variant="document" id="61582"}
-alert("INICIOU");
 import {
     db,
     collection,
