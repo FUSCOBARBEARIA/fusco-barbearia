@@ -40,3 +40,31 @@ button{
     font-size:18px;
     cursor:pointer;
 }
+.contato{
+    margin-top:20px;
+    text-align:center;
+    color:#d4af37;
+    line-height:2;
+}
+
+.contato p{
+    color:#d4af37;
+}
+
+.mapa-btn{
+    display:block;
+    width:220px;
+    margin:25px auto;
+    padding:15px;
+    text-align:center;
+    background:#d4af37;
+    color:#000;
+    text-decoration:none;
+    border-radius:10px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.mapa-btn:hover{
+    transform:scale(1.05);
+}
