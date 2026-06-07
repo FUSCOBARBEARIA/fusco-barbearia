@@ -75,7 +75,6 @@ document.getElementById("agendamentoForm").addEventListener("submit", async func
 ```
 e.preventDefault();
 
-
 const nome = document.getElementById("nome").value;
 const telefone = document.getElementById("telefone").value;
 const servico = document.getElementById("servico").value;
