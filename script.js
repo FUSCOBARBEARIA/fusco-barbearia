@@ -76,6 +76,23 @@ document.getElementById("agendamentoForm").addEventListener("submit", async func
     const data = document.getElementById("data").value;
     const hora = document.getElementById("hora").value;
 
+    const mensagem =
+`Olá! Gostaria de agendar um horário.
+
+Nome: ${nome}
+Telefone: ${telefone}
+Serviço: ${servico}
+Data: ${data}
+Horário: ${hora}`;
+
+    const numero = "5514996909094";
+
+    const url =
+`https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
+
+    // Abre o WhatsApp primeiro (funciona melhor no iPhone)
+    window.location.href = url;
+
     try {
 
         await addDoc(collection(db, "agendamentos"), {
@@ -87,24 +104,9 @@ document.getElementById("agendamentoForm").addEventListener("submit", async func
             criadoEm: new Date()
         });
 
-        const mensagem =
-`Olá! Gostaria de agendar um horário.
-
-Nome: ${nome}
-Telefone: ${telefone}
-Serviço: ${servico}
-Data: ${data}
-Horário: ${hora}`;
-
-        const numero = "5514996909094";
-
-        window.location.href =
-        `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
-
     } catch(error) {
 
         console.error(error);
-        alert("Erro ao salvar agendamento.");
 
     }
 
