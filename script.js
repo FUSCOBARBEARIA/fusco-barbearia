@@ -1,4 +1,6 @@
-document.getElementById("agendamentoForm").addEventListener("submit", function(e){
+import { db, collection, addDoc } from "./firebase.js";
+
+document.getElementById("agendamentoForm").addEventListener("submit", async function(e){
 
     e.preventDefault();
 
@@ -8,7 +10,18 @@ document.getElementById("agendamentoForm").addEventListener("submit", function(e
     const data = document.getElementById("data").value;
     const hora = document.getElementById("hora").value;
 
-    const mensagem =
+    try {
+
+        await addDoc(collection(db, "agendamentos"), {
+            nome,
+            telefone,
+            servico,
+            data,
+            hora,
+            criadoEm: new Date()
+        });
+
+        const mensagem =
 `Olá! Gostaria de agendar um horário.
 
 Nome: ${nome}
@@ -17,11 +30,20 @@ Serviço: ${servico}
 Data: ${data}
 Horário: ${hora}`;
 
-    const numero = "5514996909094";
+        const numero = "5514996909094";
 
-    const url =
+        const url =
 `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
 
-    window.open(url, "_blank");
+        window.open(url, "_blank");
+
+        alert("Agendamento registrado com sucesso!");
+
+    } catch(error) {
+
+        console.error(error);
+        alert("Erro ao salvar agendamento.");
+
+    }
 
 });
