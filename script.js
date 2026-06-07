@@ -6,6 +6,7 @@ import {
     query,
     where
 } from "./firebase.js";
+alert("SCRIPT OK");
 
 const selectHora = document.getElementById("hora");
 const inputData = document.getElementById("data");
