@@ -8,6 +8,7 @@ import {
 } from "./firebase.js";
 
 console.log("VERSAO NOVA");
+alert("Script carregado");
 
 const selectHora = document.getElementById("hora");
 const inputData = document.getElementById("data");
@@ -44,14 +45,13 @@ async function atualizarHorarios() {
 
     const snapshot = await getDocs(q);
 
-console.log("Agendamentos encontrados:", snapshot.size);
+    console.log("Agendamentos encontrados:", snapshot.size);
 
-const ocupados = [];
+    const ocupados = [];
 
-snapshot.forEach((doc) => {
-    console.log(doc.data());
-    ocupados.push(doc.data().hora);
-});
+    snapshot.forEach((doc) => {
+        console.log(doc.data());
+        ocupados.push(doc.data().hora);
     });
 
     horarios.forEach((hora) => {
