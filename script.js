@@ -7,9 +7,6 @@ import {
     where
 } from "./firebase.js";
 
-console.log("VERSAO NOVA");
-alert("Script carregado");
-
 const selectHora = document.getElementById("hora");
 const inputData = document.getElementById("data");
 
@@ -45,12 +42,9 @@ async function atualizarHorarios() {
 
     const snapshot = await getDocs(q);
 
-    console.log("Agendamentos encontrados:", snapshot.size);
-
     const ocupados = [];
 
     snapshot.forEach((doc) => {
-        console.log(doc.data());
         ocupados.push(doc.data().hora);
     });
 
@@ -104,14 +98,8 @@ Horário: ${hora}`;
 
         const numero = "5514996909094";
 
-        window.open(
-            `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`,
-            "_blank"
-        );
-
-        alert("Agendamento registrado com sucesso!");
-
-        atualizarHorarios();
+        window.location.href =
+        `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
 
     } catch(error) {
 
