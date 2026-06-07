@@ -73,7 +73,6 @@ document.getElementById("agendamentoForm").addEventListener("submit", async func
 ```
 e.preventDefault();
 
-alert("Botão clicado");
 
 const nome = document.getElementById("nome").value;
 const telefone = document.getElementById("telefone").value;
