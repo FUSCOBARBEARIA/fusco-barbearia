@@ -68,7 +68,10 @@ const ocupados = [];
 
 }
 
-inputData.addEventListener("change", atualizarHorarios);
+inputData.addEventListener("change", () => {
+    alert("Data alterada");
+    atualizarHorarios();
+});
 
 document.getElementById("agendamentoForm").addEventListener("submit", async function(e){
 
