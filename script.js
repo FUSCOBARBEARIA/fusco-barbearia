@@ -1,4 +1,70 @@
-import { db, collection, addDoc } from "./firebase.js";
+import {
+    db,
+    collection,
+    addDoc,
+    getDocs,
+    query,
+    where
+} from "./firebase.js";
+
+const selectHora = document.getElementById("hora");
+const inputData = document.getElementById("data");
+
+const horarios = [
+    "09:00",
+    "10:00",
+    "11:00",
+    "12:00",
+    "13:00",
+    "14:00",
+    "15:00",
+    "16:00",
+    "17:00",
+    "18:00",
+    "19:00",
+    "20:00",
+    "21:00"
+];
+
+async function atualizarHorarios() {
+
+    const data = inputData.value;
+
+    if (!data) return;
+
+    selectHora.innerHTML =
+        '<option value="">Escolha um horário</option>';
+
+    const q = query(
+        collection(db, "agendamentos"),
+        where("data", "==", data)
+    );
+
+    const snapshot = await getDocs(q);
+
+    const ocupados = [];
+
+    snapshot.forEach((doc) => {
+        ocupados.push(doc.data().hora);
+    });
+
+    horarios.forEach((hora) => {
+
+        if (!ocupados.includes(hora)) {
+
+            const option = document.createElement("option");
+            option.value = hora;
+            option.textContent = hora;
+
+            selectHora.appendChild(option);
+
+        }
+
+    });
+
+}
+
+inputData.addEventListener("change", atualizarHorarios);
 
 document.getElementById("agendamentoForm").addEventListener("submit", async function(e){
 
@@ -32,12 +98,14 @@ Horário: ${hora}`;
 
         const numero = "5514996909094";
 
-        const url =
-`https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
-
-        window.open(url, "_blank");
+        window.open(
+            `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`,
+            "_blank"
+        );
 
         alert("Agendamento registrado com sucesso!");
+
+        atualizarHorarios();
 
     } catch(error) {
 
