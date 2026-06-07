@@ -11,6 +11,7 @@ import {
 
 const selectHora = document.getElementById("hora");
 const inputData = document.getElementById("data");
+alert("Campo data: " + (inputData ? "OK" : "ERRO"));
 
 const horarios = [
     "09:00",
