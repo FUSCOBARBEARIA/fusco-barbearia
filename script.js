@@ -44,7 +44,9 @@ async function atualizarHorarios() {
 
     const snapshot = await getDocs(q);
 
-    const ocupados = [];
+alert("Encontrados: " + snapshot.size);
+
+const ocupados = [];
 
     snapshot.forEach((doc) => {
         ocupados.push(doc.data().hora);
