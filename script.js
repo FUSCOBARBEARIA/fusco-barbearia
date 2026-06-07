@@ -44,10 +44,14 @@ async function atualizarHorarios() {
 
     const snapshot = await getDocs(q);
 
-    const ocupados = [];
+console.log("Agendamentos encontrados:", snapshot.size);
 
-    snapshot.forEach((doc) => {
-        ocupados.push(doc.data().hora);
+const ocupados = [];
+
+snapshot.forEach((doc) => {
+    console.log(doc.data());
+    ocupados.push(doc.data().hora);
+});
     });
 
     horarios.forEach((hora) => {
