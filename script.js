@@ -7,6 +7,8 @@ query,
 where
 } from "./firebase.js";
 
+alert("SCRIPT CARREGOU");
+
 const selectHora = document.getElementById("hora");
 const inputData = document.getElementById("data");
 
