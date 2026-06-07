@@ -1,88 +1,87 @@
 import {
-    db,
-    collection,
-    addDoc,
-    getDocs,
-    query,
-    where
+db,
+collection,
+addDoc,
+getDocs,
+query,
+where
 } from "./firebase.js";
 
 const selectHora = document.getElementById("hora");
 const inputData = document.getElementById("data");
-alert("Campo data: " + (inputData ? "OK" : "ERRO"));
 
 const horarios = [
-    "09:00",
-    "10:00",
-    "11:00",
-    "12:00",
-    "13:00",
-    "14:00",
-    "15:00",
-    "16:00",
-    "17:00",
-    "18:00",
-    "19:00",
-    "20:00",
-    "21:00"
+"09:00",
+"10:00",
+"11:00",
+"12:00",
+"13:00",
+"14:00",
+"15:00",
+"16:00",
+"17:00",
+"18:00",
+"19:00",
+"20:00",
+"21:00"
 ];
 
 async function atualizarHorarios() {
 
-    const data = inputData.value;
+```
+const data = inputData.value;
 
-    if (!data) return;
+if (!data) return;
 
-    selectHora.innerHTML =
-        '<option value="">Escolha um horário</option>';
+selectHora.innerHTML =
+    '<option value="">Escolha um horário</option>';
 
-    const q = query(
-        collection(db, "agendamentos"),
-        where("data", "==", data)
-    );
+const q = query(
+    collection(db, "agendamentos"),
+    where("data", "==", data)
+);
 
-    const snapshot = await getDocs(q);
-
-alert("Encontrados: " + snapshot.size);
+const snapshot = await getDocs(q);
 
 const ocupados = [];
 
-    snapshot.forEach((doc) => {
-        ocupados.push(doc.data().hora);
-    });
+snapshot.forEach((doc) => {
+    ocupados.push(doc.data().hora);
+});
 
-    horarios.forEach((hora) => {
+horarios.forEach((hora) => {
 
-        if (!ocupados.includes(hora)) {
+    if (!ocupados.includes(hora)) {
 
-            const option = document.createElement("option");
-            option.value = hora;
-            option.textContent = hora;
+        const option = document.createElement("option");
+        option.value = hora;
+        option.textContent = hora;
 
-            selectHora.appendChild(option);
+        selectHora.appendChild(option);
 
-        }
+    }
 
-    });
+});
+```
 
 }
 
-inputData.addEventListener("change", () => {
-    alert("Data alterada");
-    atualizarHorarios();
-});
+inputData.addEventListener("change", atualizarHorarios);
 
 document.getElementById("agendamentoForm").addEventListener("submit", async function(e){
 
-    e.preventDefault();
+```
+e.preventDefault();
 
-    const nome = document.getElementById("nome").value;
-    const telefone = document.getElementById("telefone").value;
-    const servico = document.getElementById("servico").value;
-    const data = document.getElementById("data").value;
-    const hora = document.getElementById("hora").value;
+const nome = document.getElementById("nome").value;
+const telefone = document.getElementById("telefone").value;
+const servico = document.getElementById("servico").value;
+const data = document.getElementById("data").value;
+const hora = document.getElementById("hora").value;
 
-    const mensagem =
+const mensagem =
+```
+
 `Olá! Gostaria de agendar um horário.
 
 Nome: ${nome}
@@ -91,35 +90,34 @@ Serviço: ${servico}
 Data: ${data}
 Horário: ${hora}`;
 
-    const numero = "5514996909094";
+```
+const numero = "5514996909094";
+
+try {
+
+    await addDoc(collection(db, "agendamentos"), {
+        nome,
+        telefone,
+        servico,
+        data,
+        hora,
+        criadoEm: new Date()
+    });
 
     const url =
+```
+
 `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
 
-    try {
+```
+    window.location.href = url;
 
-        await addDoc(collection(db, "agendamentos"), {
-            nome,
-            telefone,
-            servico,
-            data,
-            hora,
-            criadoEm: new Date()
-        });
+} catch(error) {
 
-        window.location.href = url;
+    console.error(error);
+    alert("Erro ao salvar agendamento.");
 
-    } catch(error) {
-
-        console.error(error);
-        alert("Erro ao salvar agendamento.");
-
-    }
+}
+```
 
 });
-:::
-
-Depois, no `index.html`, troque:
-
-```html
-<script type="module" src="script.js?v=8"></script>
