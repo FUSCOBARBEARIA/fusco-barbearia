@@ -72,7 +72,7 @@ button{
     transform:scale(1.05);
 }
 .slogan{
-    color:#d4af37;
+    color:red !important;
     font-size:18px;
     font-style:italic;
     margin-top:-10px;
