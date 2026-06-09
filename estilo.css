@@ -72,6 +72,9 @@ button{
     transform:scale(1.05);
 }
 .slogan{
-    color:lime !important;
-    font-size:30px !important;
+    color:#d4af37;
+    font-size:18px;
+    font-style:italic;
+    margin-top:-10px;
+    margin-bottom:25px;
 }
