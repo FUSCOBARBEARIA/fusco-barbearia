@@ -71,3 +71,10 @@ button{
 .mapa-btn:hover{
     transform:scale(1.05);
 }
+.slogan{
+    color:#d4af37;
+    font-size:18px;
+    font-style:italic;
+    margin-top:-10px;
+    margin-bottom:25px;
+}
