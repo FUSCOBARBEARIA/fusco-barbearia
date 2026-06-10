@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel de Agendamentos</title>
+
+<link rel="stylesheet" href="estilo.css">
+
+<style>
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+th, td{
+    border:1px solid #d4af37;
+    padding:10px;
+    text-align:center;
+}
+
+th{
+    background:#d4af37;
+    color:#000;
+}
+
+td{
+    background:#222;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+    <h1>AGENDAMENTOS</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>Serviço</th>
+                <th>Data</th>
+                <th>Hora</th>
+            </tr>
+        </thead>
+
+        <tbody id="listaAgendamentos">
+
+        </tbody>
+    </table>
+
+</div>
+
+<script type="module" src="painel.js"></script>
+
+</body>
+</html>
