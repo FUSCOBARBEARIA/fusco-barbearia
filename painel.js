@@ -8,7 +8,6 @@ const tabela = document.getElementById("listaAgendamentos");
 
 async function carregarAgendamentos() {
 
-```
 const snapshot = await getDocs(
     collection(db, "agendamentos")
 );
@@ -60,7 +59,6 @@ Object.keys(agrupados).forEach((data) => {
     });
 
 });
-```
 
 }
 
