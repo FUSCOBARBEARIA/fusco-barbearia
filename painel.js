@@ -8,6 +8,8 @@ const tabela = document.getElementById("listaAgendamentos");
 
 const filtroData = document.getElementById("filtroData");
 
+let dataSelecionada = "";
+
 async function carregarAgendamentos() {
 
 const snapshot = await getDocs(
