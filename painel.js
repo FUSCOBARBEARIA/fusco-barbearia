@@ -52,6 +52,10 @@ tabela.innerHTML = "";
 
 Object.keys(agrupados).forEach((data) => {
 
+    if (dataSelecionada && data !== dataSelecionada) {
+        return;
+    }
+
     tabela.innerHTML += `
     <tr>
         <th colspan="5">📅 ${data}</th>
