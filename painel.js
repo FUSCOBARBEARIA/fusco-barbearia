@@ -1,7 +1,9 @@
 import {
 db,
 collection,
-getDocs
+getDocs,
+deleteDoc,
+doc
 } from "./firebase.js";
 
 const tabela = document.getElementById("listaAgendamentos");
