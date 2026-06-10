@@ -8,6 +8,8 @@ const tabela = document.getElementById("listaAgendamentos");
 
 const filtroData = document.getElementById("filtroData");
 
+const calendario = document.getElementById("calendario");
+
 let dataSelecionada = "";
 
 async function carregarAgendamentos() {
@@ -62,6 +64,18 @@ datas.forEach((data) => {
         <option value="${data}">
             ${data}
         </option>
+    `;
+
+});
+
+    calendario.innerHTML = "";
+
+datas.forEach((data) => {
+
+    calendario.innerHTML += `
+        <div class="dia">
+            ${data}
+        </div>
     `;
 
 });
