@@ -48,6 +48,20 @@ agendamentos.forEach((item) => {
 
 });
 
+    filtroData.innerHTML = `
+    <option value="">Todas as datas</option>
+`;
+
+datas.forEach((data) => {
+
+    filtroData.innerHTML += `
+        <option value="${data}">
+            ${data}
+        </option>
+    `;
+
+});
+
 tabela.innerHTML = "";
 
 Object.keys(agrupados).forEach((data) => {
