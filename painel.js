@@ -52,22 +52,9 @@ agendamentos.forEach((item) => {
 
 });
 
-    filtroData.innerHTML = `
-    <option value="">Todas as datas</option>
-`;
 
 console.log([...datas]);
     
-datas.forEach((data) => {
-
-    filtroData.innerHTML += `
-        <option value="${data}">
-            ${data}
-        </option>
-    `;
-
-});
-
 calendario.innerHTML = "";
 
 document.getElementById("mesAtual").textContent = "Junho 2026";
