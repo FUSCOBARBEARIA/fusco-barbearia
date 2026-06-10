@@ -88,6 +88,28 @@ filtroData.addEventListener("change", () => {
 
     dataSelecionada = filtroData.value;
 
+    document.addEventListener("click", async (e) => {
+
+    if(!e.target.classList.contains("btnExcluir")){
+        return;
+    }
+
+    const confirmar = confirm("Deseja excluir este agendamento?");
+
+    if(!confirmar){
+        return;
+    }
+
+    const id = e.target.dataset.id;
+
+    await deleteDoc(
+        doc(db, "agendamentos", id)
+    );
+
+    carregarAgendamentos();
+
+});
+
     carregarAgendamentos();
 
 });
