@@ -52,6 +52,8 @@ agendamentos.forEach((item) => {
     <option value="">Todas as datas</option>
 `;
 
+console.log([...datas]);
+    
 datas.forEach((data) => {
 
     filtroData.innerHTML += `
@@ -101,3 +103,5 @@ filtroData.addEventListener("change", () => {
     carregarAgendamentos();
 
 });
+
+carregarAgendamentos();
