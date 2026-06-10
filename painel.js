@@ -17,9 +17,12 @@ async function carregarAgendamentos() {
 
     const agendamentos = [];
 
-    snapshot.forEach((doc) => {
-        agendamentos.push(doc.data());
+  snapshot.forEach((doc) => {
+    agendamentos.push({
+        id: doc.id,
+        ...doc.data()
     });
+});
 
     agendamentos.sort((a, b) => {
 
