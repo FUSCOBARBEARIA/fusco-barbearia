@@ -1,113 +1,17 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Painel de Agendamentos</title>
+<h1>AGENDAMENTOS</h1>
 
-<link rel="stylesheet" href="estilo.css">
+<input type="date" id="filtroData">
 
-<style>
-    
-.dia{
-    background:#222;
-    border:1px solid #d4af37;
-    color:white;
-    padding:12px;
-    text-align:center;
-    border-radius:8px;
-    cursor:pointer;
-    font-weight:bold;
-    min-height:50px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
+<table>
+    <thead>
+        <tr>
+            <th>Hora</th>
+            <th>Nome</th>
+            <th>Telefone</th>
+            <th>Serviço</th>
+            <th>Status</th>
+        </tr>
+    </thead>
 
-.dia:hover{
-    background:#333;
-}
-
-.com-agendamento{
-    background:#d4af37;
-    color:#000;
-}
-
-    .dia.ativo{
-    background:#d4af37;
-    color:#000;
-    border:2px solid #fff;
-}
-
-    #calendario{
-    display:grid;
-    grid-template-columns:repeat(7, 1fr);
-    gap:8px;
-    margin:20px 0;
-}
-
-#mesAtual{
-    color:#d4af37;
-    text-align:center;
-    margin-bottom:15px;
-}
-    
-table{
-    width:100%;
-    border-collapse:collapse;
-    margin-top:20px;
-}
-
-th, td{
-    border:1px solid #d4af37;
-    padding:10px;
-    text-align:center;
-}
-
-th{
-    background:#d4af37;
-    color:#000;
-}
-
-td{
-    background:#222;
-}
-</style>
-
-</head>
-<body>
-
-<div class="container">
-
-    <h1>AGENDAMENTOS</h1>
-
-    <h2 id="mesAtual"></h2>
-
-    <div id="calendario"></div>
-
-<hr style="margin:20px 0; border-color:#d4af37;">
-
- <input type="date" id="filtroData">
-
-    <table>
-        <thead>
-            <tr>
- <th>Hora</th>
- <th>Nome</th>
- <th>Telefone</th>
- <th>Serviço</th>
- <th>Status</th>
-            </tr>
-        </thead>
-
-        <tbody id="listaAgendamentos">
-
-        </tbody>
-    </table>
-
-</div>
-
-<script type="module" src="painel.js"></script>
-
-</body>
-</html>
+    <tbody id="listaAgendamentos"></tbody>
+</table>
