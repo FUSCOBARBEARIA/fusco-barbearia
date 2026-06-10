@@ -19,12 +19,12 @@ async function carregarAgendamentos() {
 
     const agendamentos = [];
 
-  snapshot.forEach((doc) => {
-    agendamentos.push({
-        id: doc.id,
-        ...doc.data()
+    snapshot.forEach((docItem) => {
+        agendamentos.push({
+            id: docItem.id,
+            ...docItem.data()
+        });
     });
-});
 
     agendamentos.sort((a, b) => {
 
@@ -62,25 +62,25 @@ async function carregarAgendamentos() {
         </tr>
         `;
 
-agrupados[data].forEach((agendamento) => {
+        agrupados[data].forEach((agendamento) => {
 
-    tabela.innerHTML += `
-    <tr>
-        <td>${agendamento.hora}</td>
-        <td>${agendamento.nome}</td>
-        <td>${agendamento.telefone}</td>
-        <td>${agendamento.servico || "-"}</td>
-        <td>
-            <button class="btnExcluir" data-id="${agendamento.id}">
-                🗑️
-            </button>
-        </td>
-    </tr>
-    `;
+            tabela.innerHTML += `
+            <tr>
+                <td>${agendamento.hora}</td>
+                <td>${agendamento.nome}</td>
+                <td>${agendamento.telefone}</td>
+                <td>${agendamento.servico || "-"}</td>
+                <td>
+                    <button class="btnExcluir" data-id="${agendamento.id}">
+                        🗑️
+                    </button>
+                </td>
+            </tr>
+            `;
 
-});
+        });
 
-});
+    });
 
 }
 
