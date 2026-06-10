@@ -70,15 +70,12 @@ async function carregarAgendamentos() {
                 <td>${agendamento.nome}</td>
                 <td>${agendamento.telefone}</td>
                 <td>${agendamento.servico || "-"}</td>
-                <td>
+                
 <td>
     <button class="btnExcluir" data-id="${agendamento.id}">
         🗑️
     </button>
 </td>
-            `;
-
-        });
 
 
 filtroData.addEventListener("change", () => {
