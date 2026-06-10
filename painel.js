@@ -12,6 +12,8 @@ let dataSelecionada = "";
 
 async function carregarAgendamentos() {
 
+    console.log("FUNÇÃO EXECUTOU");
+
 const snapshot = await getDocs(
     collection(db, "agendamentos")
 );
