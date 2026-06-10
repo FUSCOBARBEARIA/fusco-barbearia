@@ -7,14 +7,11 @@ getDocs
 const tabela = document.getElementById("listaAgendamentos");
 
 async function carregarAgendamentos() {
-    
-console.log("FUNÇÃO INICIADA");
-    
+
+```
 const snapshot = await getDocs(
     collection(db, "agendamentos")
 );
-
-    console.log("DOCUMENTOS:", snapshot.size);
 
 const agendamentos = [];
 
@@ -69,6 +66,7 @@ Object.keys(agrupados).forEach((data) => {
     });
 
 });
+```
 
 }
 
