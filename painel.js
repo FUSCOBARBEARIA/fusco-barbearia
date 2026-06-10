@@ -76,6 +76,10 @@ datas.forEach((data) => {
 
     dia.classList.add("dia");
 
+    if(data === dataSelecionada){
+    dia.classList.add("ativo");
+}
+
     dia.textContent = data;
 
     dia.addEventListener("click", () => {
