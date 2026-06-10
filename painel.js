@@ -83,3 +83,13 @@ agrupados[data].forEach((agendamento) => {
 });
 
 }
+
+filtroData.addEventListener("change", () => {
+
+    dataSelecionada = filtroData.value;
+
+    carregarAgendamentos();
+
+});
+
+carregarAgendamentos();
