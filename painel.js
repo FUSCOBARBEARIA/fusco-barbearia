@@ -19,32 +19,36 @@ snapshot.forEach((doc) => {
 });
 
 agendamentos.sort((a, b) => {
+
     if (a.data === b.data) {
         return a.hora.localeCompare(b.hora);
     }
+
     return a.data.localeCompare(b.data);
+
 });
 
 const agrupados = {};
 
 agendamentos.forEach((item) => {
+
     if (!agrupados[item.data]) {
         agrupados[item.data] = [];
     }
+
     agrupados[item.data].push(item);
+
 });
 
 tabela.innerHTML = "";
 
 Object.keys(agrupados).forEach((data) => {
 
-    
-
-tabela.innerHTML += `
-<tr>
-    <th colspan="5">📅 ${data}</th>
-</tr>
-`;
+    tabela.innerHTML += `
+    <tr>
+        <th colspan="5">📅 ${data}</th>
+    </tr>
+    `;
 
     agrupados[data].forEach((agendamento) => {
 
