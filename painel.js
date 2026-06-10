@@ -5,101 +5,73 @@ getDocs
 } from "./firebase.js";
 
 const tabela = document.getElementById("listaAgendamentos");
-
 const filtroData = document.getElementById("filtroData");
-
-const calendario = document.getElementById("calendario");
 
 let dataSelecionada = "";
 
 async function carregarAgendamentos() {
 
-    console.log("FUNÇÃO EXECUTOU");
+    const snapshot = await getDocs(
+        collection(db, "agendamentos")
+    );
 
-const snapshot = await getDocs(
-    collection(db, "agendamentos")
-);
+    const agendamentos = [];
 
-const agendamentos = [];
+    snapshot.forEach((doc) => {
+        agendamentos.push(doc.data());
+    });
 
-snapshot.forEach((doc) => {
-    agendamentos.push(doc.data());
-});
+    agendamentos.sort((a, b) => {
 
-agendamentos.sort((a, b) => {
+        if (a.data === b.data) {
+            return a.hora.localeCompare(b.hora);
+        }
 
-    if (a.data === b.data) {
-        return a.hora.localeCompare(b.hora);
-    }
-
-    return a.data.localeCompare(b.data);
-
-});
-
-const datas = new Set();    
-
-const agrupados = {};
-
-agendamentos.forEach((item) => {
-
-    datas.add(item.data);
-
-    if (!agrupados[item.data]) {
-        agrupados[item.data] = [];
-    }
-
-    agrupados[item.data].push(item);
-
-});
-
-
-console.log([...datas]);
-    
-calendario.innerHTML = "";
-
-document.getElementById("mesAtual").textContent = "Junho 2026";
-
-for(let diaNumero = 1; diaNumero <= 30; diaNumero++){
-
-    const dia = document.createElement("div");
-
-    dia.classList.add("dia");
-
-    dia.textContent = diaNumero;
-
-    calendario.appendChild(dia);
-
-}
-    
-tabela.innerHTML = "";
-
-Object.keys(agrupados).forEach((data) => {
-
-    if (dataSelecionada && data !== dataSelecionada) {
-        return;
-    }
-
-    tabela.innerHTML += `
-    <tr>
-        <th colspan="5">📅 ${data}</th>
-    </tr>
-    `;
-
-    agrupados[data].forEach((agendamento) => {
-
-        tabela.innerHTML += `
-        <tr>
-            <td>${agendamento.hora}</td>
-            <td>${agendamento.nome}</td>
-            <td>${agendamento.telefone}</td>
-            <td>${agendamento.servico || "-"}</td>
-            <td>💈</td>
-        </tr>
-        `;
+        return a.data.localeCompare(b.data);
 
     });
 
-});
+    const agrupados = {};
+
+    agendamentos.forEach((item) => {
+
+        if (!agrupados[item.data]) {
+            agrupados[item.data] = [];
+        }
+
+        agrupados[item.data].push(item);
+
+    });
+
+    tabela.innerHTML = "";
+
+    Object.keys(agrupados).forEach((data) => {
+
+        if (dataSelecionada && data !== dataSelecionada) {
+            return;
+        }
+
+        tabela.innerHTML += `
+        <tr>
+            <th colspan="5">📅 ${data}</th>
+        </tr>
+        `;
+
+        agrupados[data].forEach((agendamento) => {
+
+            tabela.innerHTML += `
+            <tr>
+                <td>${agendamento.hora}</td>
+                <td>${agendamento.nome}</td>
+                <td>${agendamento.telefone}</td>
+                <td>${agendamento.servico || "-"}</td>
+                <td>💈</td>
+            </tr>
+            `;
+
+        });
+
+    });
 
 }
 
