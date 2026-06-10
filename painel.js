@@ -65,7 +65,9 @@ async function carregarAgendamentos() {
                 <td>${agendamento.nome}</td>
                 <td>${agendamento.telefone}</td>
                 <td>${agendamento.servico || "-"}</td>
-                <td>💈</td>
+                <td>
+    <button class="btnExcluir">🗑️</button>
+</td>
             </tr>
             `;
 
