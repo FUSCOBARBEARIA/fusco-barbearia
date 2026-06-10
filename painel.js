@@ -6,6 +6,8 @@ getDocs
 
 const tabela = document.getElementById("listaAgendamentos");
 
+const filtroData = document.getElementById("filtroData");
+
 async function carregarAgendamentos() {
 
 const snapshot = await getDocs(
