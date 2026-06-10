@@ -87,5 +87,3 @@ filtroData.addEventListener("change", () => {
     carregarAgendamentos();
 
 });
-
-carregarAgendamentos();
