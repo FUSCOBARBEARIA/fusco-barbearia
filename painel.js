@@ -30,9 +30,13 @@ agendamentos.sort((a, b) => {
 
 });
 
+const datas = new Set();    
+
 const agrupados = {};
 
 agendamentos.forEach((item) => {
+
+    datas.add(item.data);
 
     if (!agrupados[item.data]) {
         agrupados[item.data] = [];
