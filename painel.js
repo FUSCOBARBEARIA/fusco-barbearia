@@ -71,16 +71,15 @@ async function carregarAgendamentos() {
                 <td>${agendamento.telefone}</td>
                 <td>${agendamento.servico || "-"}</td>
                 <td>
-    <button class="btnExcluir">🗑️</button>
+<td>
+    <button class="btnExcluir" data-id="${agendamento.id}">
+        🗑️
+    </button>
 </td>
-            </tr>
             `;
 
         });
 
-    });
-
-}
 
 filtroData.addEventListener("change", () => {
 
