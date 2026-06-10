@@ -38,11 +38,13 @@ tabela.innerHTML = "";
 
 Object.keys(agrupados).forEach((data) => {
 
-    tabela.innerHTML += `
-    <tr>
-        <th colspan="5">📅 ${data}</th>
-    </tr>
-    `;
+    
+
+tabela.innerHTML += `
+<tr>
+    <th colspan="5">📅 ${data}</th>
+</tr>
+`;
 
     agrupados[data].forEach((agendamento) => {
 
