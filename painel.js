@@ -76,4 +76,12 @@ Object.keys(agrupados).forEach((data) => {
 
 }
 
+filtroData.addEventListener("change", () => {
+
+    dataSelecionada = filtroData.value;
+
+    carregarAgendamentos();
+
+});
+
 carregarAgendamentos();
