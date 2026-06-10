@@ -68,18 +68,28 @@ datas.forEach((data) => {
 
 });
 
-    calendario.innerHTML = "";
+calendario.innerHTML = "";
 
 datas.forEach((data) => {
 
-    calendario.innerHTML += `
-        <div class="dia">
-            ${data}
-        </div>
-    `;
+    const dia = document.createElement("div");
+
+    dia.classList.add("dia");
+
+    dia.textContent = data;
+
+    dia.addEventListener("click", () => {
+
+        dataSelecionada = data;
+
+        carregarAgendamentos();
+
+    });
+
+    calendario.appendChild(dia);
 
 });
-
+    
 tabela.innerHTML = "";
 
 Object.keys(agrupados).forEach((data) => {
