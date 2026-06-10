@@ -62,28 +62,24 @@ async function carregarAgendamentos() {
         </tr>
         `;
 
-        agrupados[data].forEach((agendamento) => {
+agrupados[data].forEach((agendamento) => {
 
-            tabela.innerHTML += `
-            <tr>
-                <td>${agendamento.hora}</td>
-                <td>${agendamento.nome}</td>
-                <td>${agendamento.telefone}</td>
-                <td>${agendamento.servico || "-"}</td>
-                
-<td>
-    <button class="btnExcluir" data-id="${agendamento.id}">
-        🗑️
-    </button>
-</td>
-
-
-filtroData.addEventListener("change", () => {
-
-    dataSelecionada = filtroData.value;
-
-    carregarAgendamentos();
+    tabela.innerHTML += `
+    <tr>
+        <td>${agendamento.hora}</td>
+        <td>${agendamento.nome}</td>
+        <td>${agendamento.telefone}</td>
+        <td>${agendamento.servico || "-"}</td>
+        <td>
+            <button class="btnExcluir" data-id="${agendamento.id}">
+                🗑️
+            </button>
+        </td>
+    </tr>
+    `;
 
 });
 
-carregarAgendamentos();
+});
+
+}
