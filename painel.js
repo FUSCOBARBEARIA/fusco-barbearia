@@ -70,29 +70,19 @@ datas.forEach((data) => {
 
 calendario.innerHTML = "";
 
-datas.forEach((data) => {
+document.getElementById("mesAtual").textContent = "Junho 2026";
+
+for(let diaNumero = 1; diaNumero <= 30; diaNumero++){
 
     const dia = document.createElement("div");
 
     dia.classList.add("dia");
 
-    if(data === dataSelecionada){
-    dia.classList.add("ativo");
-}
-
-    dia.textContent = data;
-
-    dia.addEventListener("click", () => {
-
-        dataSelecionada = data;
-
-        carregarAgendamentos();
-
-    });
+    dia.textContent = diaNumero;
 
     calendario.appendChild(dia);
 
-});
+}
     
 tabela.innerHTML = "";
 
