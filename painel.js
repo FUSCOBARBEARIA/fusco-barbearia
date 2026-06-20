@@ -53,15 +53,8 @@ console.log("HOJE:", new Date().toISOString().split("T")[0]);
 
 });
 
-document.getElementById("totalHoje").textContent = 0;
-
-document.getElementById("faturamentoHoje").textContent =
-    "R$ 0,00";
     
     tabela.innerHTML = "";
-
-    let totalExibido = 0;
-let faturamentoExibido = 0;
 
     Object.keys(agrupados).forEach((data) => {
 
