@@ -60,6 +60,9 @@ document.getElementById("faturamentoHoje").textContent =
     
     tabela.innerHTML = "";
 
+    let totalExibido = 0;
+let faturamentoExibido = 0;
+
     Object.keys(agrupados).forEach((data) => {
 
         if (dataSelecionada && data !== dataSelecionada) {
@@ -73,6 +76,18 @@ document.getElementById("faturamentoHoje").textContent =
         `;
 
         agrupados[data].forEach((agendamento) => {
+
+            totalExibido++;
+
+const valor = parseFloat(
+    (agendamento.servico || "")
+    .replace(/[^\d,]/g, "")
+    .replace(",", ".")
+);
+
+if(!isNaN(valor)){
+    faturamentoExibido += valor;
+}
 
             tabela.innerHTML += `
             <tr>
