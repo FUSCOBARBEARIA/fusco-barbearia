@@ -69,6 +69,13 @@ let faturamentoHoje = 0;
 
 });
 
+document.getElementById("totalHoje").textContent = totalHoje;
+
+document.getElementById("faturamentoHoje").textContent =
+    `R$ ${faturamentoHoje.toFixed(2).replace(".", ",")}`;
+
+tabela.innerHTML = "";
+    
     tabela.innerHTML = "";
 
     Object.keys(agrupados).forEach((data) => {
