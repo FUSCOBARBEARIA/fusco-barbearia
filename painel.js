@@ -62,8 +62,6 @@ document.getElementById("totalHoje").textContent = 0;
 
 document.getElementById("faturamentoHoje").textContent =
     "R$ 0,00";
-
-tabela.innerHTML = "";
     
     tabela.innerHTML = "";
 
@@ -105,9 +103,15 @@ filtroData.addEventListener("change", () => {
 
     dataSelecionada = filtroData.value;
 
-    document.addEventListener("click", async (e) => {
+    carregarAgendamentos();
 
-    if(!e.target.classList.contains("btnExcluir")){
+});
+
+document.addEventListener("click", async (e) => {
+
+    const botao = e.target.closest(".btnExcluir");
+
+    if(!botao){
         return;
     }
 
@@ -117,15 +121,11 @@ filtroData.addEventListener("change", () => {
         return;
     }
 
-    const id = e.target.dataset.id;
+    const id = botao.dataset.id;
 
     await deleteDoc(
         doc(db, "agendamentos", id)
     );
-
-    carregarAgendamentos();
-
-});
 
     carregarAgendamentos();
 
