@@ -36,10 +36,12 @@ async function carregarAgendamentos() {
 
     });
 
-    const agrupados = {};
+ const agrupados = {};
 
-    let totalHoje = 0;
+let totalHoje = 0;
 let faturamentoHoje = 0;
+
+console.log("HOJE:", new Date().toISOString().split("T")[0]);
 
   agendamentos.forEach((item) => {
 
