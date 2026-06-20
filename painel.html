@@ -58,6 +58,34 @@ td{
     background:#222;
 }
 
+    #dashboard{
+    display:flex;
+    gap:20px;
+    justify-content:center;
+    margin:20px 0;
+    flex-wrap:wrap;
+}
+
+.card-dashboard{
+    background:#222;
+    border:2px solid #d4af37;
+    border-radius:12px;
+    padding:15px 25px;
+    min-width:180px;
+    text-align:center;
+}
+
+.card-dashboard h3{
+    color:#d4af37;
+    margin:0 0 10px;
+}
+
+.card-dashboard p{
+    font-size:28px;
+    font-weight:bold;
+    margin:0;
+}
+    
 </style>
 
 </head>
@@ -66,6 +94,18 @@ td{
 <div class="container">
 
     <h1>AGENDAMENTOS</h1>
+
+    <div id="dashboard">
+    <div class="card-dashboard">
+        <h3>📅 Hoje</h3>
+        <p id="totalHoje">0</p>
+    </div>
+
+    <div class="card-dashboard">
+        <h3>💈 Faturamento</h3>
+        <p id="faturamentoHoje">R$ 0,00</p>
+    </div>
+</div>
 
     <input type="date" id="filtroData">
 
