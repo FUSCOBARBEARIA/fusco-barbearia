@@ -38,8 +38,8 @@ async function carregarAgendamentos() {
 
  const agrupados = {};
 
-let totalHoje = 0;
-let faturamentoHoje = 0;
+let totalExibido = 0;
+let faturamentoExibido = 0;
 
 console.log("HOJE:", new Date().toISOString().split("T")[0]);
 
@@ -51,30 +51,17 @@ console.log("HOJE:", new Date().toISOString().split("T")[0]);
 
     agrupados[item.data].push(item);
 
-    const hoje = new Date().toISOString().split("T")[0];
-
-    if(item.data === hoje){
-
-        totalHoje++;
-
-        const valor = parseFloat(
-            (item.servico || "")
-            .replace(/[^\d,]/g, "")
-            .replace(",", ".")
-        );
-
-        if(!isNaN(valor)){
-            faturamentoHoje += valor;
+   
         }
 
     }
 
 });
 
-document.getElementById("totalHoje").textContent = totalHoje;
+document.getElementById("totalHoje").textContent = 0;
 
 document.getElementById("faturamentoHoje").textContent =
-    `R$ ${faturamentoHoje.toFixed(2).replace(".", ",")}`;
+    "R$ 0,00";
 
 tabela.innerHTML = "";
     
