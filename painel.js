@@ -38,15 +38,36 @@ async function carregarAgendamentos() {
 
     const agrupados = {};
 
-    agendamentos.forEach((item) => {
+    let totalHoje = 0;
+let faturamentoHoje = 0;
 
-        if (!agrupados[item.data]) {
-            agrupados[item.data] = [];
+  agendamentos.forEach((item) => {
+
+    if (!agrupados[item.data]) {
+        agrupados[item.data] = [];
+    }
+
+    agrupados[item.data].push(item);
+
+    const hoje = new Date().toISOString().split("T")[0];
+
+    if(item.data === hoje){
+
+        totalHoje++;
+
+        const valor = parseFloat(
+            (item.servico || "")
+            .replace(/[^\d,]/g, "")
+            .replace(",", ".")
+        );
+
+        if(!isNaN(valor)){
+            faturamentoHoje += valor;
         }
 
-        agrupados[item.data].push(item);
+    }
 
-    });
+});
 
     tabela.innerHTML = "";
 
