@@ -89,10 +89,15 @@ if(!isNaN(valor)){
                 <td>${agendamento.telefone}</td>
                 <td>${agendamento.servico || "-"}</td>
                 <td>
-                    <button class="btnExcluir" data-id="${agendamento.id}">
-                        🗑️
-                    </button>
-                </td>
+               <td>
+    <button class="btnWhatsapp" data-telefone="${agendamento.telefone}">
+        💬
+    </button>
+
+    <button class="btnExcluir" data-id="${agendamento.id}">
+        🗑️
+    </button>
+</td>
             </tr>
             `;
 
