@@ -122,6 +122,20 @@ filtroData.addEventListener("change", () => {
 
 document.addEventListener("click", async (e) => {
 
+    const botaoWhatsapp = e.target.closest(".btnWhatsapp");
+
+if (botaoWhatsapp) {
+
+    const telefone = botaoWhatsapp.dataset.telefone;
+
+    window.open(
+        `https://wa.me/55${telefone}`,
+        "_blank"
+    );
+
+    return;
+}
+
     const botao = e.target.closest(".btnExcluir");
 
     if(!botao){
