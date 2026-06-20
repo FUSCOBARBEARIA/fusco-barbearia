@@ -107,6 +107,12 @@ if(!isNaN(valor)){
 
     });
 
+    document.getElementById("totalHoje").textContent =
+    totalExibido;
+
+document.getElementById("faturamentoHoje").textContent =
+    `R$ ${faturamentoExibido.toFixed(2).replace(".", ",")}`;
+
 }
 
 filtroData.addEventListener("change", () => {
