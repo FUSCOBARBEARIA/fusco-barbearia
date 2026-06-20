@@ -43,18 +43,13 @@ let faturamentoExibido = 0;
 
 console.log("HOJE:", new Date().toISOString().split("T")[0]);
 
-  agendamentos.forEach((item) => {
+ agendamentos.forEach((item) => {
 
     if (!agrupados[item.data]) {
         agrupados[item.data] = [];
     }
 
     agrupados[item.data].push(item);
-
-   
-        }
-
-    }
 
 });
 
