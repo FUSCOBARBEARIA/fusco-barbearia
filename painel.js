@@ -89,7 +89,6 @@ if(!isNaN(valor)){
                 <td>${agendamento.telefone}</td>
                 <td>${agendamento.servico || "-"}</td>
                 <td>
-               <td>
     <button class="btnWhatsapp" data-telefone="${agendamento.telefone}">
         💬
     </button>
